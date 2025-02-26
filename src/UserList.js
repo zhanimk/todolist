@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './App.css'; 
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Сеть не отвечает');
         }
         const data = await response.json();
         setUsers(data);
@@ -18,20 +20,28 @@ const UserList = () => {
         setLoading(false);
       }
     };
+
     fetchUsers();
   }, []);
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Загрузка...</div>;
   }
+
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Ошибка: {error}</div>;
   }
+
   return (
-    <ul>
-      {users.map(user => (
-        <li key={user.id}>{user.name}</li>
-      ))}
-    </ul>
+    <div className="user-container">
+      <h1>Список пользователей</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
   );
 };
+
 export default UserList;

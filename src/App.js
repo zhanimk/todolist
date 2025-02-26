@@ -1,11 +1,15 @@
 import React from 'react';
-import UserList from './components/UserList'; 
+import TodoList from './TodoList';
+import UserList from './UserList'; 
+import './App.css'; 
+
 const App = () => {
   return (
-    <div>
-      <h1>Список пользователей</h1>
-      <UserList /> { }
+    <div className="container">
+      <TodoList />
+      <UserList />
     </div>
   );
 };
+
 export default App;
