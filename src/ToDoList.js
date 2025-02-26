@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
-import './App.css'; // Импортируем CSS файл
-
+import './App.css'; 
 const ToDoList = () => {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState('');
-
   const handleInputChange = (e) => {
     setTask(e.target.value);
   };
-
   const handleAddTask = () => {
     if (task.trim()) {
       setTasks([...tasks, task]);
       setTask('');
     }
   };
-
   const handleDeleteTask = (index) => {
     const newTasks = tasks.filter((_, i) => i !== index);
     setTasks(newTasks);
