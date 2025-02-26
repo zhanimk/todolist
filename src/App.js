@@ -1,12 +1,11 @@
 import React from 'react';
-import './App.css'; 
-import ToDoList from './ToDoList'; 
-function App() {
+import UserList from './components/UserList'; 
+const App = () => {
   return (
-    <div className="App">
-      <ToDoList />
+    <div>
+      <h1>Список пользователей</h1>
+      <UserList /> { }
     </div>
   );
-}
-
+};
 export default App;
